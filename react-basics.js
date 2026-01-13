@@ -53,5 +53,5 @@
 
     console.log('hello')
     setInterval(() => {
-        console.log('repeat at 1 second')
+        console.log('repeat again and again after 1 second')
     }, 1000);
