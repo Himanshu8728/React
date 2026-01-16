@@ -60,31 +60,58 @@
         )
     }
 
-    function App(){
-        return 
-        (
+    function ChatMessages(){
+        const chatmessages=[{
+            message: 'hello chatbot',
+            sender: 'user',
+            id:'id1'
+        }, {
+            message: 'Hello! How can I help you?',
+            sender: 'robot',
+            id:'id2'
+        }, {
+            message: 'can you tell me todays date',
+            sender: 'user',
+            id:'id3'
+        }, {
+            message: 'Today is January 11',
+            sender: 'robot',
+            id:'id4'
+        }];
+
+        function sendMessage(){
+            chatMessages.push({
+                message: 'test', 
+                sender: 'use'
+            })
+        }
+
+        return (
             <>
-            <ChatInput />
-            <ChatMessage 
-                message="hello chatbot" 
-                sender="user"
-            />
-            <ChatMessage 
-                message="Hello! How can I help you?" 
-                sender="robot"/>
-            <ChatMessage 
-                message="can you tell me todays date" 
-                sender="user"
-            />
-            <ChatMessage 
-                message="Today is January 11" 
-                sender="robot"
-            />
+                <button onClick={sendMessage} >Send message</button>
+                {chatmessages.map((chatMessage)=>{
+                    return (
+                        <ChatMessage 
+                        message={chatMessage.message}
+                        sender={chatMessage.sender}
+                        key={chatMessage.id}
+                        />
+                    );
+                })}
             </>
         )
     }
 
-        
+    function App(){
+
+        return (
+        <>
+            <ChatInput />
+            <ChatMessages />
+        </>
+     )
+    }
+
 
         const container = document.querySelector('.js-container')
         ReactDOM.createRoot(container).render(<App />)

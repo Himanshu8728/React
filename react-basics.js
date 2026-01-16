@@ -51,7 +51,4 @@
     //     root.render(paragraph)
     // }, 1000)
 
-    console.log('hello')
-    setInterval(() => {
-        console.log('Repeat again and again after 1 second')
-    }, 1000);
+   
