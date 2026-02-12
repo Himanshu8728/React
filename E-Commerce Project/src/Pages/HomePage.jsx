@@ -1,13 +1,16 @@
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Header } from "../components/Header";
-import { products } from "../../Starting code/data/products";
 import "./HomePage.css";
 
 export function HomePage() {
-  axios.get('http://localhost:3000/api/products')
-    .then((response)=>{
-      console.log(response.data)
-        })
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:3000/api/products").then((response) => {
+      setProducts(response.data);
+    });
+  }, []);
+
   return (
     <>
       <Header />
@@ -18,10 +21,7 @@ export function HomePage() {
             return (
               <div key={product.id} className="product-container">
                 <div className="product-image-container">
-                  <img
-                    className="product-image"
-                    src={product.image}
-                  />
+                  <img className="product-image" src={product.image} />
                 </div>
 
                 <div className="product-name limit-text-to-2-lines">
